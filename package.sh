@@ -5,3 +5,4 @@ if [ -f designs.zip ]; then
 fi
 
 zip -9 -r designs.zip designs
+tar -czvf designs.tar.gz designs
