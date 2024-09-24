@@ -80,7 +80,8 @@ reg [15:0] datamux_o_alu_in_left_path_data, datamux_o_alu_in_right_path_data, da
 
 reg k_p2_valid, k_p3_valid; /* 1 when k_postbyte has been loaded for page 2 or page 3 */
 
-/* * Interrupt sync registers 
+/*
+ * Interrupt sync registers 
  */
 
 reg [2:0] k_reg_nmi, k_reg_irq, k_reg_firq;
@@ -453,7 +454,7 @@ always @(posedge cpu_clk or posedge k_reset)
 					end
 				`SEQ_LOADPC: /* loads the PC with the address taken from the reset vector */
 					begin
-						$display("cpu_data_i %02x %t", cpu_data_i, $time);
+						// $display("cpu_data_i %02x %t", cpu_data_i, $time);
 						state <= `SEQ_FETCH;
 						k_mem_dest <= `MEMDEST_MH; // operand to memlo/memhi
 					end
