@@ -136,7 +136,7 @@ begin
 				2'b01: workunit2 = workunit2 - (((workunit1 << 4 ^ workunit1 >> 5) + workunit1) ^ (sum + key_in[95:64]));
 				2'b10: workunit2 = workunit2 - (((workunit1 << 4 ^ workunit1 >> 5) + workunit1) ^ (sum + key_in[63:32]));
 				2'b11: workunit2 = workunit2 - (((workunit1 << 4 ^ workunit1 >> 5) + workunit1) ^ (sum + key_in[31:0]));
-				default: workunit2 = 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+				default: workunit2 = 32'h00000000;
 			    endcase
 			s7: sum = sum - delta;
 			s8: selectslice = (sum & 32'd3);
@@ -146,7 +146,7 @@ begin
 				2'b01: workunit1 = workunit1 - (((workunit2 << 4 ^ workunit2 >> 5) + workunit2) ^ (sum + key_in[95:64]));
 				2'b10: workunit1 = workunit1 - (((workunit2 << 4 ^ workunit2 >> 5) + workunit2) ^ (sum + key_in[63:32]));
 				2'b11: workunit1 = workunit1 - (((workunit2 << 4 ^ workunit2 >> 5) + workunit2) ^ (sum + key_in[31:0]));
-				default: workunit1 = 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+				default: workunit1 = 32'h00000000;
 			    endcase
 			    x = x + 1'b1;
 			    end
@@ -157,7 +157,7 @@ begin
                                 2'b01: workunit1 = workunit1 + (((workunit2 << 4 ^ workunit2 >> 5) + workunit2) ^ (sum + key_in[95:64]));
                                 2'b10: workunit1 = workunit1 + (((workunit2 << 4 ^ workunit2 >> 5) + workunit2) ^ (sum + key_in[63:32]));
                                 2'b11: workunit1 = workunit1 + (((workunit2 << 4 ^ workunit2 >> 5) + workunit2) ^ (sum + key_in[31:0]));
-                                default: workunit1 = 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+                                default: workunit1 = 32'h00000000;
                             endcase
                         s12: sum = sum + delta;
                         s13: selectslice = (sum >> 32'd11 & 32'd3);
@@ -167,7 +167,7 @@ begin
                                 2'b01: workunit2 = workunit2 + (((workunit1 << 4 ^ workunit1 >> 5) + workunit1) ^ (sum + key_in[95:64]));
                                 2'b10: workunit2 = workunit2 + (((workunit1 << 4 ^ workunit1 >> 5) + workunit1) ^ (sum + key_in[63:32]));
 	                        2'b11: workunit2 = workunit2 + (((workunit1 << 4 ^ workunit1 >> 5) + workunit1) ^ (sum + key_in[31:0]));
-                                default: workunit2 = 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+                                default: workunit2 = 32'h00000000;
                             endcase
                             x = x + 1'b1;
                             end
@@ -182,8 +182,8 @@ begin
 			     end
 			 s17: all_done = 1'b1;
 			 default: begin
-			     data_out1 = 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
-			     data_out2 = 32'bzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
+			     data_out1 = 32'h00000000;
+			     data_out2 = 32'h00000000;
 			     end
 		 endcase
 	end
